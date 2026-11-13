@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+  <title>VotaFácil — Enquetes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="VotaFácil, início">
+      <span class="brand-icon" aria-hidden="true">✓</span>
+      <span>VotaFácil</span>
+    </a>
+    <span class="topbar-label">Enquetes simples e rápidas</span>
+  </header>
+
+  <main class="page-container">
+    <section class="intro">
+      <span class="eyebrow">SUA OPINIÃO CONTA</span>
+      <h1>Uma pergunta. Muitas opiniões.</h1>
+      <p>Crie uma enquete e acompanhe os resultados em tempo real.</p>
+    </section>
+
+    <p id="app-message" class="app-message" role="status" aria-live="polite" hidden></p>
+
+    <section id="create-screen" class="panel" aria-labelledby="create-title">
+      <div class="panel-heading">
+        <div>
+          <span class="step-label">PASSO 1</span>
+          <h2 id="create-title">Criar votação</h2>
+        </div>
+        <span class="heading-icon" aria-hidden="true">＋</span>
+      </div>
+
+      <form id="create-form">
+        <label for="question">Qual é a pergunta?</label>
+        <input
+          id="question"
+          name="question"
+          type="text"
+          maxlength="180"
+          placeholder="Ex.: Quem vai ser rebaixado no Brasileirão 2026?"
+          required
+        >
+
+        <div class="options-heading">
+          <label for="option-input">Opções de resposta</label>
+          <span id="option-count" class="muted">0 opções</span>
+        </div>
+        <div class="add-option-row">
+          <input
+            id="option-input"
+            type="text"
+            maxlength="80"
+            placeholder="Digite o nome de uma opção"
+            autocomplete="off"
+          >
+          <button id="add-option" class="button button-secondary" type="button">Adicionar</button>
+        </div>
+        <ul id="option-list" class="option-list" aria-label="Opções adicionadas"></ul>
+        <p class="field-help">Adicione pelo menos duas opções para criar a votação.</p>
+
+        <button class="button button-primary button-full" type="submit">Criar votação</button>
+      </form>
+    </section>
+
+    <section id="poll-screen" class="panel" aria-labelledby="poll-question" hidden>
+      <div class="panel-heading">
+        <div>
+          <span id="poll-status" class="step-label">VOTAÇÃO ABERTA</span>
+          <h2 id="poll-question"></h2>
+        </div>
+        <span class="heading-icon" aria-hidden="true">▤</span>
+      </div>
+
+      <div class="poll-layout">
+        <form id="vote-form" class="vote-section">
+          <label for="voter-name">Seu nome</label>
+          <input
+            id="voter-name"
+            name="voterName"
+            type="text"
+            maxlength="60"
+            placeholder="Digite seu nome"
+            autocomplete="name"
+            required
+          >
+
+          <fieldset class="choices">
+            <legend>Escolha uma opção</legend>
+            <div id="poll-options"></div>
+          </fieldset>
+
+          <button id="vote-button" class="button button-primary button-full" type="submit">Confirmar meu voto</button>
+          <p id="vote-feedback" class="field-help" role="status" aria-live="polite"></p>
+        </form>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div>
+              <span class="step-label">PLACAR</span>
+              <h3 id="results-title">Resultados</h3>
+            </div>
+            <span id="total-votes" class="vote-total">0 votos</span>
+          </div>
+          <div id="results-list" class="results-list"></div>
+        </section>
+      </div>
+
+      <div class="admin-actions">
+        <span class="field-help">Ações da votação</span>
+        <div class="admin-buttons">
+          <button id="end-poll" class="button button-secondary" type="button">Encerrar votação</button>
+          <button id="reset-poll" class="button button-danger" type="button">Criar nova votação</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="page-footer">Feito para ouvir todo mundo.</footer>
+  </main>
+</body>
+</html>
